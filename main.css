@@ -1,0 +1,162 @@
+/* .container {
+    display: flex;
+  }
+  
+  .box {
+    flex: 1;
+    width: 25%;
+    margin: 10px;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-wrap: wrap;
+    }
+    .box {
+      width: 50%;
+    }
+  }
+   */
+
+   /*  above code working to give responsive 4 column layout */
+
+
+   /*  below is workig code  */
+   /* .container {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+}
+
+.box {
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2,1fr);
+    }
+} */
+/* This will create a grid of 4 columns and 4 rows by default. When the screen size is less than or equal to 768px, the grid template columns will be set to 2 columns which will cause the images to adjust to 2 images per row in mobile and tablet views.
+
+You can adjust the grid template columns value and the media query breakpoint as needed to achieve the desired layout. */
+  
+
+/* The first line .container { display: grid;} sets the container element to be a grid container.
+The second line grid-template-columns: repeat(4,1fr); creates 4 columns in the grid with the value of 1fr(fraction of free space) each. This means that each column will take up an equal amount of the remaining space in the container.
+The third line grid-gap: 10px; creates a gap of 10px between each of the grid items.
+The fourth line .box { width: 100%;} sets the width of the grid items to 100% of the container.
+The fifth line img { width: 100%; height: auto;} sets the width of images inside the grid items to 100% and height is set to auto so the images will adjust their height proportionally.
+The sixth line @media (max-width: 768px) { is the start of a media query. Media queries are used to apply CSS styles based on the screen size. The media query is checking if the screen width is less than or equal to 768px.
+The seventh line .container { grid-template-columns: repeat(2,1fr);} creates 2 columns in the grid when the screen size is less than or equal to 768px.
+The last line } is the end of the media query block.
+This way the grid layout of the images is responsive and the number of columns changes according to the screen size, 4 columns per row on desktop and 2 columns per row on mobile and tablet views. */
+
+/* 
+.container {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+}
+
+.box {
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: repeat(2,1fr);
+    }
+} */
+
+/* .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    width: 25%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin:auto;
+}
+
+@media (max-width: 768px) {
+    .box {
+        width: 50%;
+    }
+} */
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1080px;
+    margin: auto;
+}
+
+.box {
+    width: 25%;
+    min-height: 200px;
+    padding: 1px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:10px;
+}
+
+img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin:auto;
+}
+
+
+@media (max-width: 768px) {
+    .box {
+        width: 50%;
+    }
+}
+
+@media (max-width: 350px) {
+    .container {
+        max-width: 100%;
+    }
+    .box {
+        width: 50%;
+        min-height: 250px;
+    }
+    .box {
+        margin-bottom: 0;
+    }
+}
+
