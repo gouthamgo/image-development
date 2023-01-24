@@ -12,54 +12,69 @@
 <body>
    
 
-    <!-- <div class="container">
-        <div class="box">
-          <img src="/221222-summerdresses-d.webp" alt="1">
-        </div>
-        <div class="box">
-          <img src="/221222-summerdresses-d.webp" alt="1">
-        </div>
-        <div class="box">
-          <img src="/221222-summerdresses-d.webp" alt="1">
-        </div>
-        <div class="box">
-          <img src="/221222-summerdresses-d.webp" alt="image4">
-        </div>
-      </div> -->
-
-
-      <!--  8 images comtainer -->
-
-      <div class="container">
-        <div class="box">
-          <img src="/1.webp" alt="1">
-        </div>
-        <div class="box">
-          <img src="/1.webp" alt="image2">
-        </div>
-        <div class="box">
-          <img src="/1.webp" alt="1">
-        </div>
-        <div class="box">
-          <img src="/1.webp" alt="image4">
-        </div>
-        
-        <div class="box">
-          <img src="/1.webp" alt="1">
-        </div>
-        <div class="box">
-          <img src="/1.webp" alt="image2">
-        </div>
-        <div class="box">
-          <img src="/1.webp" alt="1">
-        </div>
-        <div class="box">
-          <img src="/1.webp" alt="image4">
-        </div>
-        
+    <div id="timer-container">
+        <div id="timer"></div>
+        <button id="start-button">Start</button>
+        <button id="stop-button">Stop</button>
+        <button id="reset-button">Reset</button>
+        <input type="number" id="countdown-time" value="60">
       </div>
+      <audio id="alarm" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3"></audio>
       
       
+      
+    <script>
+        var alarm = document.getElementById("alarm");
+var countDownTimeInput = document.getElementById("countdown-time");
+var startButton = document.getElementById("start-button");
+var stopButton = document.getElementById("stop-button");
+var resetButton = document.getElementById("reset-button");
+var timer = document.getElementById("timer");
+var intervalId;
+
+startButton.addEventListener("click", startTimer);
+stopButton.addEventListener("click", stopTimer);
+resetButton.addEventListener("click", resetTimer);
+
+function startTimer() {
+  var countDownTime = countDownTimeInput.value;
+  var currentTime = new Date().getTime();
+  var endTime = currentTime + (countDownTime * 1000);
+
+  intervalId = setInterval(function() {
+    var timeRemaining = endTime - new Date().getTime();
+
+    if (timeRemaining <= 0) {
+      clearInterval(intervalId);
+      alarm.play();
+      return;
+    }
+
+    var seconds = Math.floor((timeRemaining / 1000) % 60);
+    var minutes = Math.floor((timeRemaining / 1000 / 60) % 60);
+    var hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+    timer.innerHTML = hours + " hours " + minutes + " minutes " + seconds + " seconds";
+  }, 1000);
+
+  startButton.setAttribute("disabled", true);
+  resetButton.setAttribute("disabled", true);
+}
+
+function stopTimer() {
+  clearInterval(intervalId);
+  startButton.removeAttribute("disabled");
+  resetButton.removeAttribute("disabled");
+}
+
+function resetTimer() {
+  clearInterval(intervalId);
+  countDownTimeInput.value = 60;
+  timer.innerHTML = "";
+  startButton.removeAttribute("disabled");
+}
+
+    </script>
+        
 
 </body>
 </html>
